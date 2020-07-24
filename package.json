@@ -18,6 +18,18 @@
   },
   "homepage": "https://github.com/unwraptech/unwrap-arch-backend#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.6.0",
+    "joi": "^17.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "node-input-validator": "^4.2.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0"
   }
 }
