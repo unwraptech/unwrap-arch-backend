@@ -1,6 +1,10 @@
 const UserController = require('./user-controller');
 const user = new UserController();
-
-
-module.exports = { user }
+const MobileController = require('./mobile-controllers');
+const mobile = new MobileController();
+const FileController = require('./file-controllers');
+const file = new FileController();
+const UploadController = require('./upload-controllers');
+const upload = new UploadController();
+module.exports = { user , mobile , file , upload}
 // module.exports = { home}

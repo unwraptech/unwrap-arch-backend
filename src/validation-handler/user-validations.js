@@ -9,7 +9,7 @@ module.exports = class validation {
             email: Joi.string().email().required(),
             password: Joi.string().min(6).required()
           });
-          const validationResult = joiSchema.validate({ name: req.query.name, email: req.query.email , password: req.query.password  }, { abortEarly: false });
+          const validationResult = joiSchema.validate({ name: req.body.name, email: req.body.email , password: req.body.password  }, { abortEarly: false });
           console.log(validationResult.error); 
            if (validationResult.error){
             res.status(300).send({data : validationResult.error.details[0].message})
@@ -24,7 +24,7 @@ module.exports = class validation {
             email: Joi.string().email().required(),
             password: Joi.string().min(6).required()
           });
-          const validationResult = joiSchema.validate({ email: req.query.email , password: req.query.password  }, { abortEarly: false });
+          const validationResult = joiSchema.validate({ email: req.body.email , password: req.body.password  }, { abortEarly: false });
           console.log(validationResult.error); 
            if (validationResult.error){
             res.status(300).send({data : validationResult.error.details[0].message})

@@ -7,12 +7,10 @@ const saltRounds = 10;
 
 require('dotenv').config();
 class UserController {
-
   async login(req, res) {
     try {
-      var email = req.query.email;
-      var password = req.query.password;
-
+      var email = req.body.email;
+      var password = req.body.password;
       const authenticate_sql = "call authenticate('" + email + "')"
       con.query(authenticate_sql, function (err, result) {
         if (result[0][0].message === "Invalid") {
@@ -47,11 +45,11 @@ class UserController {
       return res.send({ message: "Some error occured please try again later", error: error });
     }
   }
-  async signUp(req, res) {
+  async   signUp(req, res) {
     try {
-      var email = req.query.email;
-      var password = req.query.password;
-      var name = req.query.name;
+      var email = req.body.email;
+      var password = req.body.password;
+      var name = req.body.name;
       // encrypting password -->
       bcrypt.genSalt(saltRounds, function (err, salt) {
         bcrypt.hash(password, salt, function (err, hash) {
@@ -71,11 +69,16 @@ class UserController {
       return res.send({ message: "Some error occured please try again later", error: error });
     }
   }
-  async test(req, res) {
-    console.log(req.user);
+  async getUsers(req, res) {
     try {
-      res.send('Send')
-
+      const authenticate_sql ="call getUsers("+req.params.id+")"
+      con.query(authenticate_sql, function (err, result) {
+        if (err){
+          res.status(400).json({error:'Some error occured please try again later'})
+        }else {
+          res.json({message:result[0]})
+        }
+        });
     } catch (error) {
       console.log(error);
       return res.send({ message: "Some error occured please try again later", error: error });

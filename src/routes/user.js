@@ -14,10 +14,10 @@ router.post('/authenticate',
     middleware.rules.validationlogin,
     controller.user.login
 );
-router.post('/test',
+router.get('/getUsers/:id',
     // passport.authenticate('jwt', { session: false }),
-    middleware.jwt.jwtauthentication,
-    controller.user.test
+    // middleware.jwt.jwtauthentication,
+    controller.user.getUsers
 );
 
 module.exports = router;
