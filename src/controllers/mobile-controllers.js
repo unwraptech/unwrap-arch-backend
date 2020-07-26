@@ -45,7 +45,8 @@ class MobileController {
     }
     async getMobileDevices(req, res) {
         const searchmobile_SQL ="call getAllDevices('"+req.body.noofrecords+"','"+req.body.page+"','"+req.body.type+"','"+req.body.filter  +"')"
-          con.query(searchmobile_SQL, function (err, result) {
+        console.log(searchmobile_SQL);
+        con.query(searchmobile_SQL, function (err, result) {
             if (err){
               res.status(400).json({error:'Some error occured please try again later'})
             }else {
